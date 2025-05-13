@@ -1,0 +1,45 @@
+shape_meta: &shape_meta
+  action:
+    shape:
+    - 7
+  obs:
+    # proprio:
+    #   shape:
+    #   - 8
+    #   type: low_dim
+    camera_0:
+      shape:
+      - 3
+      - 96
+      - 128
+      type: rgb
+    camera_1:
+      shape:
+      - 3
+      - 96
+      - 128
+      type: rgb
+
+dataset_dir: /media/storage/soho/
+dataset_type: null
+abs_action: true
+dataset:
+  _target_: cot_policy.dataset.real_grasping_image_dataset.GraspingImageDataset
+  shape_meta: *shape_meta
+  horizon: 16
+  max_train_episodes: null
+  pad_after: 7
+  pad_before: 1
+  use_cache: True
+  delta_action: False
+  n_latency_steps: 0
+  n_obs_steps: 2
+  seed: 42
+  val_ratio: 0.02
+  dataset_path: ${task.dataset_dir}data/real/zipper/dataset_zipper.zarr/
+image_shape:
+- 3
+- 96
+- 128
+name: real_zipper
+task_name: real_zipper

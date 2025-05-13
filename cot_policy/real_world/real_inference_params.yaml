@@ -1,0 +1,4 @@
+checkpoint_path: "/home/iiwa-kuka/software/andreas_miiniconda/exps/models/fm_policy_False_pusht_image_None/checkpoints/latest.ckpt"
+num_inference_steps: 1
+link_ee: "tool_link"
+link_ref: "ws_link"

@@ -1,0 +1,77 @@
+shape_meta:
+  action:
+    shape: [4]
+  obs:
+    corner_rgb:
+      shape: [3, 128, 128]
+      type: rgb
+    robot_states:
+      shape: [4]
+      type: low_dim
+
+img_width: 128
+img_height: 128
+dataset_type: metaworld
+abs_action: true
+env_name: bin-picking-v2
+camera_angle: high
+
+dataset:
+  _target_: cot_policy.dataset.metaworld_image_dataset.MetaworldImageDataset
+  seed: 42
+  data_prefix: /media/storage/soho/data
+  suite_name: metaworld
+  benchmark_name: ML1
+  task_name: ${task.env_name}
+  mode: train
+  seq_len: ${horizon}
+  frame_stack: ${n_obs_steps}
+  obs_seq_len: 1
+  lowdim_obs_seq_len: null
+  shape_meta: 
+      action_dim: 4
+      observation: 
+          rgb: 
+            corner_rgb: 
+            - 3,
+            - ${task.img_height},
+            - ${task.img_width}
+          lowdim: 
+            robot_states: 
+            - 4
+      task: 
+        type: onehot
+        n_tasks: 1
+
+  load_obs: True
+  n_demos: 105
+  load_next_obs: False
+  val_ratio: 0.02
+  max_train_episodes: 100
+
+env_runner:
+  _target_: cot_policy.env_runner.metaworld_image_runner.MetaworldImageRunner
+  env_name: ${task.env_name}
+  camera_angle: ${task.camera_angle}
+  shape_meta: ${shape_meta}
+  img_width: ${task.img_width}
+  img_height: ${task.img_height}
+  fps: 24
+  legacy_test: true
+  max_steps: 150
+  n_action_steps: 2
+  n_envs: null
+  n_obs_steps: 2
+  n_test: 50
+  n_test_vis: 5
+  n_train: 0
+  n_train_vis: 0
+  past_action: false
+  test_start_seed: 4300000
+  train_start_seed: 0
+image_shape:
+- 3
+- ${task.img_height},
+- ${task.img_width}
+name: metaworld_image
+task_name: metaworld_image_image

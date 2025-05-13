@@ -1,0 +1,40 @@
+shape_meta: &shape_meta
+  action:
+    shape:
+    - 2
+  obs:
+    ee_pos:
+      shape:
+      - 2
+      type: low_dim
+    camera_1:
+      shape:
+      - 3
+      - 240
+      - 320
+      type: rgb
+
+crop_shape: [216, 306] # 90% of 84x84
+dataset_dir: /media/storage/soho/
+dataset_type: null
+abs_action: true
+dataset:
+  _target_: cot_policy.dataset.real_image_dataset.PushTImageDataset
+  shape_meta: *shape_meta
+  horizon: 16
+  max_train_episodes: null
+  pad_after: 7
+  pad_before: 1
+  use_cache: True
+  delta_action: False
+  n_latency_steps: 0
+  n_obs_steps: 2
+  seed: 42
+  val_ratio: 0.02
+  dataset_path: ${task.dataset_dir}data/real/pushT/dataset_pushT.zarr/
+image_shape:
+- 3
+- 240
+- 320
+name: real_pushT
+task_name: real_pushT

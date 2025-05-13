@@ -1,0 +1,49 @@
+shape_meta:
+  action:
+    shape:
+    - 2
+  obs:
+    agent_pos:
+      shape:
+      - 2
+      type: low_dim
+    image:
+      shape:
+      - 3
+      - 96
+      - 96
+      type: rgb
+
+dataset_dir: /media/storage/soho/
+dataset_type: null
+abs_action: true
+dataset:
+  _target_: diffusion_policy.dataset.pusht_image_dataset.PushTImageDataset
+  horizon: 16
+  max_train_episodes: 90
+  pad_after: 7
+  pad_before: 1
+  seed: 42
+  val_ratio: 0.02
+  zarr_path: ${task.dataset_dir}data/pusht/pusht_cchi_v7_replay.zarr
+env_runner:
+  _target_: cot_policy.env_runner.pusht_image_runner.PushTImageRunner
+  fps: 10
+  legacy_test: true
+  max_steps: 300
+  n_action_steps: 8
+  n_envs: null
+  n_obs_steps: 2
+  n_test: 50
+  n_test_vis: 4
+  n_train: 6
+  n_train_vis: 2
+  past_action: false
+  test_start_seed: 4300000
+  train_start_seed: 0
+image_shape:
+- 3
+- 96
+- 96
+name: pusht_image
+task_name: pusht_image
