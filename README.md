@@ -10,7 +10,6 @@
 <b><a target="_blank" href="https://scholar.google.com/citations?user=6w9786sAAAAJ&hl=en">Andreas Sochopoulos</a><sup>1,2</sup>,
 <b><a target="_blank" href="https://malkin1729.github.io/">Nikolay Malkin</a><sup>1</sup>,
 <a target="_blank" href="https://tsagkas.github.io/">Nikolaos Tsagkas</a><sup>1</sup>,<br>
-<a target="_blank" href="https://homepages.inf.ed.ac.uk/svijayak/"> Sethu Vijayakumar</a><sup>1</sup>
  <a target="_blank" href="https://scholar.google.co.uk/citations?user=1L5kTRcAAAAJ&hl=en">Jo&atilde;o Moura</a><sup>1</sup>,
 <a target="_blank" href="https://scholar.google.de/citations?user=oU2jyxMAAAAJ&hl=de">Michael Gienger</a><sup>2</sup>,
 <a target="_blank" href="https://homepages.inf.ed.ac.uk/svijayak/"> Sethu Vijayakumar</a><sup>1</sup>
