@@ -27,10 +27,7 @@
 </p>
 
 
-<video src="https://github.com/ansocho/cot-policy/raw/main/media/videos/moons_animation.mp4" controls>
-Your browser does not support the video tag.
-</video>
-
+![Moons Animation](cot_policy/media/moons_animation.gif)
 
 ## Abstract
 Diffusion and flow matching policies have recently demonstrated remarkable performance in robotic applications by accurately capturing multimodal robot trajectory distributions. However, their computationally expensive inference, due to the numerical integration of an ODE or SDE, limits their applicability as real-time controllers for robots. We introduce a methodology that utilizes conditional Optimal Transport couplings between noise and samples to enforce straight solutions in the flow ODE for robot action generation tasks. We show that naively coupling noise and samples fails in conditional tasks and propose incorporating condition variables into the coupling process to improve few-step performance. The proposed few-step policy achieves a 4% higher success rate with a 10x speed-up compared to Diffusion Policy on a diverse set of simulation tasks. Moreover, it produces high-quality and diverse action trajectories within 1-2 steps on a set of real-world robot tasks. Our method also retains the same training complexity as Diffusion Policy and vanilla Flow Matching, in contrast to distillation-based approaches.
@@ -59,7 +56,7 @@ where `<suite>` needs to be replaced be `mimicgen, metaworld` or `mujoco`. To tr
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|------------------------------------------------|
 | **Metaworld**     | Use the built-in functionality of the suite to generate expert demos.         | [GitHub](https://github.com/tsagkas/pvrobo)                                                                                           | `python -m expert_demos.generate`* |
 | **MimicGen**      | Install from source and follow official instructions for dataset generation.                                                                                              | [GitHub](https://github.com/NVlabs/mimicgen), [Docs](https://mimicgen.github.io/docs/datasets/mimicgen_corl_2023.html) | `python download_datasets.py --dataset_type core --tasks <task>`               |
-| **Mujoco**  | Download pre-generated data for ball-in-cup and maze tasks. Custom mazes require changes in D4RL.                                                                         | [Download Link](https://osf.io/6ezsg/?view_only=6f4f132715b347d7949c161b5197ff60)                                                                          | —                                              |
+| **Mujoco tasks**  | Download pre-generated data for ball-in-cup and maze tasks. Custom mazes require changes in D4RL.                                                                         | [Download Link](https://osf.io/6ezsg/?view_only=6f4f132715b347d7949c161b5197ff60)                                                                          | —                                              |
 | **Real-world**    | Download teleoperated data for three real-world tasks used in the paper.                                                                                                  | [Download Link](https://osf.io/6ezsg/?view_only=6f4f132715b347d7949c161b5197ff60)                                                                          | —                                              |
 
 
@@ -76,7 +73,7 @@ You can evaluate the trained policy using variations of the following script:
 ```
 python eval.py --checkpoint /path/to/checkpoint/ -o /output/path/ -gs 10000 -es 100 -is desired_inference_steps
 ```
-The `-is` argument determines the number time steps the interval [0,1] is partioned with and it does not directly translate to neural function evaluations (NFE). If using the `euler` solver then <em>NFE= desired_inference_steps - 1</em> and when using the `midpoint` solver then <em>NFE=2*(desired_inference_steps - 1)</em>.
+The `-is` argument determines the number time steps the interval [0,1] is partioned with and it does not directly translate to neural function evaluations (NFE). If using the `euler` solver then <em>NFE= desired_inference_steps - 1</em> and when using the `midpoint` solver then <em>NFE=2*(desired_inference_steps) - 1</em>.
 
 To calculate the <em>Trajectory Variance (TV)</em> metric simply run variations of the following command:
 
