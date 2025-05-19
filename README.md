@@ -76,7 +76,7 @@ You can evaluate the trained policy using variations of the following script:
 ```
 python eval.py --checkpoint /path/to/checkpoint/ -o /output/path/ -gs 10000 -es 100 -is desired_inference_steps
 ```
-The `-is` argument determines the number time steps the interval [0,1] is partioned with and it does not directly translate to neural function evaluations (NFE). If using the `euler` solver then <em>NFE= desired_inference_steps - 1</em> and when using the `midpoint` solver then <em>NFE=2*(desired_inference_steps) - 1</em>.
+The `-is` argument determines the number time steps the interval [0,1] is partioned with and it does not directly translate to neural function evaluations (NFE). If using the `euler` solver then <em>NFE = desired_inference_steps - 1</em> and when using the `midpoint` solver then <em>NFE = 2*(desired_inference_steps - 1)</em>.
 
 To calculate the <em>Trajectory Variance (TV)</em> metric simply run variations of the following command:
 
