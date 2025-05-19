@@ -47,7 +47,7 @@ sudo apt install libosmesa6-dev libgl1-mesa-glx libglfw3
 conda env create -f environment_<suite>.yml
 conda activate cot-policy-<suite>
 ```
-where `<suite>` needs to be replaced be `mimicgen, metaworld` or `mujoco`. To train on D4RL Maze tasks, you have to manually install D4RL according to the instructions in the [official repository](https://github.com/Farama-Foundation/D4RL).
+where `<suite>` needs to be replaced be `mimicgen, metaworld` or `mujoco`. To train on D4RL Maze tasks, you have to manually install D4RL according to the instructions in the [official repository](https://github.com/Farama-Foundation/D4RL). To use the maze environments used in the experiments of our paper you can download the modifications to D4RL from the links below.
 
 
 
